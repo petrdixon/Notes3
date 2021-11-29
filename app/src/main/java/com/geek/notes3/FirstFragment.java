@@ -13,15 +13,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class FirstFragment extends Fragment {
     private boolean isLandscape;
 
-    static final String KEY_NAME = "keyName";
-    private String textDate;
-    private String textName;
-    private String textNote;
+    static final String KEY_NAME = "1";
+    private String textDate = "";
+    private String textName = "";
+    private String textNote = "";
 
     Bundle b;
 
@@ -52,17 +56,24 @@ public class FirstFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         if (!b.isEmpty()) {
-            NoteData noteData = b.getParcelable("key1");
-
-            textName = noteData.getNameNote();
-            textDate = noteData.getDataTimeNote();
-            textNote = noteData.getNameNote();
-
             TextView dateField = view.findViewById(R.id.dateText);
-            dateField.setText("");
-            dateField.setText(textDate);
-
             TextView nameField = view.findViewById(R.id.nameText);
+
+            textDate = "";
+            textName = "";
+            textNote = "";
+
+            // В bundle перебираю ключи, забираю данные, сохраненные с этими ключами, формирую строку и показываю итог в текстовом поле
+            for(String key:b.keySet()) {
+
+                NoteData noteData = b.getParcelable(key);
+                textDate = textDate + noteData.getDataTimeNote() + "\n";
+                textName = textName + noteData.getNameNote() + "\n";
+                textNote = textNote + noteData.getNameNote() + "\n";
+
+            };
+
+            dateField.setText(textDate);
             nameField.setText(textName);
         }
 

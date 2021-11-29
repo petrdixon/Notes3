@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/addNoteItem"
+        android:title="Добавить запись"
+        />
+    <item
+        android:id="@+id/anotherItem"
+        android:title="2-й пункт меню" />
+</menu>
