@@ -12,7 +12,7 @@ import android.util.Log;
 public class SecondActivity extends AppCompatActivity {
 
     Bundle b = new Bundle();
-    static final String KEY_NAME = "keyName";
+    static final String KEY_NAME = "1";
     SecondFragment secondFragment = SecondFragment.newInstance(b);
 
     @Override
@@ -29,13 +29,11 @@ public class SecondActivity extends AppCompatActivity {
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction().add(R.id.noteFragment, secondFragment).commit();
 
-
         } else if (isLandscape) {
             finish();
         }
 
     }
-
 
 
 }

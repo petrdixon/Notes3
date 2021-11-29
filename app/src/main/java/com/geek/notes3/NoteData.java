@@ -72,3 +72,18 @@ public class NoteData implements Parcelable {
     }
 
 }
+
+
+// 1. Метод запихивания в bundle с уникальным ключом
+//      это лучше делать в EntryNoteFragment
+// 2. Метод доставания из bundle. Перебор уникальных ключей, вывод в FirstFrag
+//      это лучше делать в FirstFragment
+
+// Класс работы с Bundle
+//  классу передаю parcelable
+//  класс получает из main активити или FirstFrag актуальный bundle
+//  в bundle находит очередной свободный ключ
+//  сохраняет parcelable в bundle со свободным ключом
+//  bundle передает в main активити или FirstFrag newInstance
+
+// в FirstFrag  bundle

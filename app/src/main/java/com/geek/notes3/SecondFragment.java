@@ -52,20 +52,17 @@ public class SecondFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         if (!b.isEmpty()) {
-            System.out.println("in Second Bundle NOT Empty");
-        } else {
-            System.out.println("in Second Bundle EMPTY");
-        }
 
-        if (!b.isEmpty()) {
-            NoteData noteData = b.getParcelable("key1");
-            textNote = noteData.getNameText();
-            System.out.println("in Second/ textNote " + textNote);
+            TextView noteField = view.findViewById(R.id.noteText);
+            textNote = "";
 
-            TextView dateField = view.findViewById(R.id.noteText);
-            dateField.setText("");
-            dateField.setText(textNote);
+            // В bundle перебираю ключи, забираю данные, сохраненные с этими ключами, формирую строку и показываю итог в текстовом поле
+            for (String key : b.keySet()) {
 
+                NoteData noteData = b.getParcelable(key);
+                textNote = textNote + noteData.getNameNote() + "\n";
+                noteField.setText(textNote);
+            }
         }
     }
 }
